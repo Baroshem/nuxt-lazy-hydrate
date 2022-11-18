@@ -1,5 +1,14 @@
 # nuxt-lazy-hydrate
 
+This module is a wrapper around [Vue 3 Lazy Hydration Plugin](https://github.com/freddy38510/vue3-lazy-hydration) for Nuxt 3.
+
+Huge kudos to the package author and also to Markus Oberleihner for developing this amazing idea.
+
+Make sure to give a star to both of these projects:
+
+- <https://github.com/freddy38510/vue3-lazy-hydration>
+- <https://github.com/maoberlehner/vue-lazy-hydration>
+
 ## Setup
 
 ```sh
