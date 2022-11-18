@@ -40,6 +40,8 @@ And that's it! You can now use the `LazyHydrate` component in your Nuxt app:
 </template>
 ```
 
+For all configuration options of this component, please head out to [Vue 3 Lazy Hydration Package](https://github.com/freddy38510/vue3-lazy-hydration)
+
 ## Development
 
 - Run `npm run dev:prepare` to generate type stubs.
