@@ -1,15 +1,30 @@
-import { resolve } from 'path'
-import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin } from '@nuxt/kit'
+import { defineNuxtModule, addComponent, addImportsSources } from '@nuxt/kit'
+import * as LazyHydrationModule from 'vue3-lazy-hydration'
 
 export default defineNuxtModule({
   meta: {
     name: 'nuxt-lazy-hydrate',
-    configKey: 'lazyHydrate'
+    configKey: 'lazyHydrate',
+    compatibility: {
+      nuxt: '>=3.0.0'
+    }
   },
-  setup (options, nuxt) {
-    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-    nuxt.options.build.transpile.push(runtimeDir)
-    addPlugin(resolve(runtimeDir, 'plugin'))
+  setup () {
+    // addComponent fails to add components named <Lazy* />
+    // components named like this are not imported properly in client app
+    addComponent({
+      name: 'NuxtLazyHydrate',
+      export: 'LazyHydrationWrapper',
+      filePath: 'vue3-lazy-hydration'
+    })
+
+    const composables = Object.keys(LazyHydrationModule).filter(
+      key => key !== 'LazyHydrationWrapper'
+    )
+
+    addImportsSources({
+      imports: composables,
+      from: 'vue3-lazy-hydration'
+    })
   }
 })
