@@ -28,7 +28,7 @@ The only thing you need to do to use the module in the default configuration is 
 }
 ```
 
-And that's it! You can now use the `LazyHydrate` component in your Nuxt app:
+And that's it! You can now use the `NuxtLazyHydrate` component in your Nuxt app:
 
 ```html
 <template>
